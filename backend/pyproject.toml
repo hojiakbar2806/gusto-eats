@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "gusto-eats-backend"
+version = "0.1.0"
+description = "Fastfood delivery"
+authors = ["hojiakbar2806 <hojiakbarnasriddinov2006@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["all"], version = "^0.115.0"}
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.35"}
+alembic = "^1.13.3"
+asyncpg = "^0.29.0"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+gunicorn = "^23.0.0"
+uvicorn = "^0.30.6"
+aiosqlite = "^0.20.0"
+pyjwt = "^2.9.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
