@@ -1,0 +1,41 @@
+# Node modules
+frontend/node_modules/
+backend/node_modules/
+backend/*.sqlite3
+
+# Python virtual environment
+backend/venv/
+
+# Build natijalari
+frontend/dist/
+frontend/build/
+backend/__pycache__/
+backend/*.py[cod]
+backend/$py.class
+
+# Git va yashirin fayllar
+.git
+.gitignore
+.*
+!*.env  # .env faylini qoldirish
+
+# IDE va editor fayllari
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.sublime-project
+*.sublime-workspace
+
+# OS-dan hosil bo'lgan fayllar
+Thumbs.db
+.DS_Store
+
+# Log fayllar
+*.log
+
+# Lokal konfiguratsiya fayllari
+*.local
+*.env.local
+*.env.*.local
