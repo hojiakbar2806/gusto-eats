@@ -19,8 +19,8 @@ services:
     image: hojiakbar2806/gusto-eats-frontend:latest
     expose:
       - 3000
-    env_file:
-      - frontend/.env
+    # env_file:
+    #   - frontend/.env
     networks:
       - app-network
 
