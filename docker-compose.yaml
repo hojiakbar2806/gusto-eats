@@ -6,7 +6,7 @@ services:
   backend:
     container_name: gusto-eats-backend
     image: hojiakbar2806/gusto-eats-backend:latest
-    command: /bin/sh -c " gunicorn -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 app.main:app"
+    command: /bin/sh -c "gunicorn config.wsgi --bind 0.0.0.0:8000 -w 4"
     expose:
       - 8000
     networks:
