@@ -1,34 +1,33 @@
-import * as endpoints from "../../../utils/endpoint";
 import apiService from "../apiService";
 
 export const forAdminApi = apiService.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query({
-      query: () => endpoints.USERS,
+      query: () => "/accounts/users",
     }),
     getUsersStaff: builder.query({
-      query: () => endpoints.USERS_STAFF,
+      query: () => "/accounts/users_staff",
     }),
     getStats: builder.query({
-      query: () => endpoints.GET_STATS,
+      query: () => "/api/admin/stats",
     }),
     createProduct: builder.mutation({
       query: (body) => ({
-        url: endpoints.CREATE_PRODUCT,
+        url: "/api/products",
         method: "POST",
         body,
       }),
     }),
     createUser: builder.mutation({
       query: (body) => ({
-        url: endpoints.CREATE_USER,
+        url: "/accounts/users/add",
         method: "POST",
         body,
       }),
     }),
     updateProduct: builder.mutation({
-      query: ({data, id}) => ({
-        url: endpoints.UPDATE_PRODUCT(id),
+      query: ({ data, id }) => ({
+        url: `api/products/${id}/`,
         method: "PUT",
         body: data,
       }),
@@ -36,14 +35,14 @@ export const forAdminApi = apiService.injectEndpoints({
     }),
     deleteProduct: builder.mutation({
       query: (id) => ({
-        url: endpoints.DELETE_PRODUCT(id),
+        url: `api/products/${id}/`,
         method: "DELETE",
       }),
       invalidatesTags: ["product_update"],
     }),
     createCategory: builder.mutation({
       query: (body) => ({
-        url: endpoints.CREATE_CATEGORY,
+        url: "api/categories",
         method: "POST",
         body,
       }),
@@ -51,14 +50,14 @@ export const forAdminApi = apiService.injectEndpoints({
     }),
     deleteCategory: builder.mutation({
       query: (id) => ({
-        url: endpoints.DELETE_CATEGORY(id),
+        url: `api/categories/${id}/`,
         method: "DELETE",
       }),
       invalidatesTags: ["category_update"],
     }),
     markOrderAsDelivered: builder.mutation({
       query: (id) => ({
-        url: endpoints.MARK_ORDER_AS_DELIVERED(id),
+        url: `orders/${id}/mark_as_delivered/`,
         method: "PATCH",
       }),
     }),

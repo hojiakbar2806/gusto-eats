@@ -1,20 +1,19 @@
-import * as endpoints from "../../../utils/endpoint";
 import apiService from "../apiService";
 
 export const orderApi = apiService.injectEndpoints({
   endpoints: (builder) => ({
     getOrders: builder.query({
-      query: () => endpoints.ORDERS,
+      query: () => "/api/myorders",
       providesTags: ["order_update"],
     }),
 
     getOrderById: builder.query({
-      query: (id) => endpoints.ORDER_BY_ID(id),
+      query: (id) => `orders/${id}/`,
     }),
 
     createOrder: builder.mutation({
       query: (body) => ({
-        url: endpoints.CREATE_ORDER,
+        url: "/api/orders/add",
         method: "POST",
         body,
       }),
@@ -23,7 +22,7 @@ export const orderApi = apiService.injectEndpoints({
 
     deleteOrder: builder.mutation({
       query: (id) => ({
-        url: endpoints.DELETE_ORDER(id),
+        url: `orders/${id}/`,
         method: "DELETE",
       }),
       invalidatesTags: ["order_update"],
@@ -31,7 +30,7 @@ export const orderApi = apiService.injectEndpoints({
 
     markOrderAsPaid: builder.mutation({
       query: (id) => ({
-        url: endpoints.MARK_ORDER_AS_PAID(id),
+        url: `orders/${id}/mark_as_paid/`,
         method: "PATCH",
       }),
       invalidatesTags: ["order_update"],
@@ -39,7 +38,6 @@ export const orderApi = apiService.injectEndpoints({
   }),
 });
 
-//Auto generated hook - starts with use & ends on query
 export const {
   useCreateOrderMutation,
   useGetOrdersQuery,

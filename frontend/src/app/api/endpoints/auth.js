@@ -1,11 +1,10 @@
-import * as endpoints from "../../../utils/endpoint";
 import apiService from "../apiService";
 
 export const authApi = apiService.injectEndpoints({
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (credentials) => ({
-        url: endpoints.ACCOUNTS_LOGIN,
+        url: "/accounts/login",
         method: "POST",
         body: credentials,
       }),
@@ -13,20 +12,20 @@ export const authApi = apiService.injectEndpoints({
 
     register: builder.mutation({
       query: (userData) => ({
-        url: endpoints.ACCOUNTS_REGISTER,
+        url: "/accounts/register",
         method: "POST",
         body: userData,
       }),
     }),
 
     getProfile: builder.query({
-      query: () => endpoints.ACCOUNTS_PROFILE,
+      query: () => "/accounts/profile",
       providesTags: ["update"],
     }),
 
     updateProfile: builder.mutation({
       query: (updatedData) => ({
-        url: endpoints.ACCOUNTS_PROFILE_UPDATE,
+        url: "/accounts/profile-update",
         method: "PATCH",
         body: updatedData,
       }),
@@ -35,7 +34,7 @@ export const authApi = apiService.injectEndpoints({
 
     sendOtp: builder.mutation({
       query: (email) => ({
-        url: endpoints.ACCOUNTS_SEND_OTP,
+        url: "/accounts/send-otp",
         method: "POST",
         body: { email },
       }),
@@ -43,7 +42,7 @@ export const authApi = apiService.injectEndpoints({
 
     resetPassword: builder.mutation({
       query: (resetData) => ({
-        url: endpoints.ACCOUNTS_RESET_PASSWORD,
+        url: "/accounts/reset-password",
         method: "POST",
         body: resetData,
       }),
@@ -51,7 +50,7 @@ export const authApi = apiService.injectEndpoints({
 
     logout: builder.mutation({
       query: () => ({
-        url: endpoints.ACCOUNTS_LOGOUT,
+        url: "/accounts/logout",
         method: "POST",
         body: { refresh_token: localStorage.getItem("refresh_token") },
       }),
