@@ -1,19 +1,14 @@
-FROM python:3.12-alpine AS builder
-
-RUN pip install --upgrade pip
+FROM python:3.12-slim AS base
 
 WORKDIR /app
-COPY pyproject.toml poetry.lock /app/
 
-RUN pip install poetry && poetry install --no-root
+RUN pip install --no-cache-dir poetry
 
-COPY . /app/
+COPY pyproject.toml poetry.lock* /app/
+RUN poetry config virtualenvs.create false && poetry install --no-dev --no-interaction --no-ansi
 
-FROM python:3.12-alpine
-
-WORKDIR /app
-COPY --from=builder /app /app
+COPY . .
 
 EXPOSE 8000
 
-CMD ["poetry","run","gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "app.main:app"]
+CMD ["gunicorn -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 main:app"]
