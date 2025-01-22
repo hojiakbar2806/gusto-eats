@@ -1,21 +1,12 @@
-FROM python:3.12-slim AS base
+FROM python:3.12-slim
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    libffi-dev \
-    libssl-dev \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-RUN pip install --no-cache-dir poetry
-
-COPY pyproject.toml poetry.lock* /app/
-
-RUN poetry config virtualenvs.create false && poetry install --no-root
+COPY requirements.txt /app/
+RUN pip install -r requirements.txt
 
 COPY . .
 
 EXPOSE 8000
 
-CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "-b", "0.0.0.0:8000", "app.main:app"]
+CMD ["gunicorn","--bind 0.0.0.0:8000", "config.wsgi","-w 4"]
