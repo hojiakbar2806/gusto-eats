@@ -1,0 +1,68 @@
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff !important;
+  padding: 20px 6%;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+footer > :first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+footer > :first-child > :first-child {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+footer > :first-child > :last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+footer > :first-child > :last-child > a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start !important;
+  gap: 10px;
+  text-decoration: none;
+  color: #0000008a;
+}
+
+footer > :last-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  color: #0000008a;
+  border-top: 1px solid #ccc;
+}
+
+@media screen and (max-width: 700px) {
+  footer > :first-child {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    gap: 30px;
+  }
+
+  footer > :first-child > :last-child {
+    padding-left: 10px;
+  }
+
+  footer > :first-child > :first-child {
+    width: 100%;
+  }
+
+  footer > :last-child {
+    font-size: 14px;
+  }
+}
