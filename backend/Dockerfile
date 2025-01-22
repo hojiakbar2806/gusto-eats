@@ -1,19 +1,12 @@
-FROM python:3.12-alpine AS builder
-
-RUN pip install --upgrade pip
+FROM python:3.12-slim
 
 WORKDIR /app
-COPY pyproject.toml poetry.lock /app/
 
-RUN pip install poetry && poetry install --no-root
+COPY requirements.txt /app/
+RUN pip install -r requirements.txt
 
-COPY . /app/
-
-FROM python:3.12-alpine
-
-WORKDIR /app
-COPY --from=builder /app /app
+COPY . .
 
 EXPOSE 8000
 
-CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "main:app"]
+CMD ["gunicorn","--bind 0.0.0.0:8000", "config.wsgi","-w 4"]
