@@ -1,0 +1,17 @@
+services:
+  backend:
+    container_name: gusto-eats-backend
+    image: hojiakbar2806/gusto-eats-backend:latest
+    command: /bin/sh -c " gunicorn -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 app.main:app"
+    ports:
+      - 8000:8000
+    env_file:
+      - backend/.env
+ 
+  frontend:
+    container_name: gusto-eats-frontend
+    image: hojiakbar2806/gusto-eats-frontend:latest
+    ports:
+      - 3000:3000
+    env_file:
+      - frontend/.env
