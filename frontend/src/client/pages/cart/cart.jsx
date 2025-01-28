@@ -1,4 +1,4 @@
-import React, {  memo } from "react";
+import React, { memo } from "react";
 import "./cart.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Form, Input, Button, message } from "antd";
@@ -54,15 +54,11 @@ const Cart = () => {
           {cart.items.length !== 0 ? (
             <>
               {cart.items.map((item) => {
-                const img =
-                  item.image && !item.image.startsWith("http")
-                    ? `${process.env.REACT_APP_BASE_URL}${item.image}`
-                    : item.image;
                 return (
                   <div className="cart-box" key={item.id}>
                     <div>
                       <figure>
-                        <img width="100%" src={img} alt={item.name} />
+                        <img width="100%" src={item.image} alt={item.name} />
                       </figure>
                       <h3>{item.name}</h3>
                     </div>

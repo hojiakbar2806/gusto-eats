@@ -19,10 +19,6 @@ const AddToCart = () => {
       <div>
         {cart.items.map((item) => {
           const name = item.name.split(" ").slice(0, 4).join(" ");
-          const img =
-            item.image && !item.image.startsWith("http")
-              ? `${process.env.REACT_APP_BASE_URL}${item.image}`
-              : item.image;
           return (
             <div
               className="comp-container"
@@ -35,7 +31,7 @@ const AddToCart = () => {
               }}
             >
               <Image
-                src={img}
+                src={item.image}
                 alt={item.name}
                 style={{ marginRight: 10, width: 50, height: 50 }}
               />

@@ -1,16 +1,16 @@
 services:
-  backend:
+  gusto-eats-backend:
     container_name: gusto-eats-backend
     image: hojiakbar2806/gusto-eats-backend:latest
     command: ["gunicorn","config.wsgi","-w 4", "-b 0.0.0.0:8000"]
     restart: always
 
-  frontend:
+  gusto-eats-frontend:
     container_name: gusto-eats-frontend
     image: hojiakbar2806/gusto-eats-frontend:latest
     restart: always
 
-  gusto-nginx:
+  gusto-eats-nginx:
     container_name: gusto-nginx
     image: nginx:latest
     volumes:

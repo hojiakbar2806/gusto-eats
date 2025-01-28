@@ -9,11 +9,11 @@ export const forAdminApi = apiService.injectEndpoints({
       query: () => "/accounts/users_staff",
     }),
     getStats: builder.query({
-      query: () => "/api/admin/stats",
+      query: () => "/admin/stats",
     }),
     createProduct: builder.mutation({
       query: (body) => ({
-        url: "/api/products",
+        url: "/products",
         method: "POST",
         body,
       }),
@@ -27,7 +27,7 @@ export const forAdminApi = apiService.injectEndpoints({
     }),
     updateProduct: builder.mutation({
       query: ({ data, id }) => ({
-        url: `api/products/${id}/`,
+        url: `/products/${id}/`,
         method: "PUT",
         body: data,
       }),
@@ -35,14 +35,14 @@ export const forAdminApi = apiService.injectEndpoints({
     }),
     deleteProduct: builder.mutation({
       query: (id) => ({
-        url: `api/products/${id}/`,
+        url: `/products/${id}/`,
         method: "DELETE",
       }),
       invalidatesTags: ["product_update"],
     }),
     createCategory: builder.mutation({
       query: (body) => ({
-        url: "api/categories",
+        url: "/categories",
         method: "POST",
         body,
       }),
@@ -50,14 +50,14 @@ export const forAdminApi = apiService.injectEndpoints({
     }),
     deleteCategory: builder.mutation({
       query: (id) => ({
-        url: `api/categories/${id}/`,
+        url: `/categories/${id}/`,
         method: "DELETE",
       }),
       invalidatesTags: ["category_update"],
     }),
     markOrderAsDelivered: builder.mutation({
       query: (id) => ({
-        url: `orders/${id}/mark_as_delivered/`,
+        url: `/orders/${id}/mark_as_delivered/`,
         method: "PATCH",
       }),
     }),

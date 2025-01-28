@@ -3,7 +3,7 @@ import apiService from "../apiService";
 export const orderApi = apiService.injectEndpoints({
   endpoints: (builder) => ({
     getOrders: builder.query({
-      query: () => "/api/myorders",
+      query: () => "/myorders",
       providesTags: ["order_update"],
     }),
 
@@ -13,7 +13,7 @@ export const orderApi = apiService.injectEndpoints({
 
     createOrder: builder.mutation({
       query: (body) => ({
-        url: "/api/orders/add",
+        url: "/orders/add",
         method: "POST",
         body,
       }),

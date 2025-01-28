@@ -16,10 +16,7 @@ export default function OrderItem() {
       return (
         <div className="box" key={item.id}>
           <figure>
-            <img
-              src={`${process.env.REACT_APP_BASE_URL}${item.product.image}`}
-              alt="item"
-            />
+            <img src={item.product.image} alt="item" />
           </figure>
           <h2>{item.product.name}</h2>
           <h2>{item.qty}</h2>

@@ -8,10 +8,7 @@ export default function SendFeedBack() {
 
   const handleSubmit = async (values) => {
     try {
-      const res = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/api/v1/feedback/`,
-        values
-      );
+      const res = await axios.post(`/api/v1/feedback/`, values);
       if (res.status === 201) {
         message.success("Feedback has been sent");
         form.resetFields();

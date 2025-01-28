@@ -65,14 +65,10 @@ const ShowProduct = () => {
             {data.products
               ?.filter((item) => item.type === type)
               ?.map((item) => {
-                const img =
-                  item.image && !item.image.startsWith("http")
-                    ? `${process.env.REACT_APP_BASE_URL}${item.image}`
-                    : item.image;
                 return (
                   <div className="box" key={item.id}>
                     <figure>
-                      <img src={img} alt="" />
+                      <img src={item.image} alt="" />
 
                       {item.discount !== 0 && (
                         <div className="chip">{item.discount}%</div>
