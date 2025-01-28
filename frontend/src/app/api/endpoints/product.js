@@ -3,7 +3,7 @@ import apiService from "../apiService";
 export const productApi = apiService.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: (query) => (query ? `/products/?${query}` : `/products`),
+      query: (query) => (query ? `/products/?${query}` : `/products/`),
       providesTags: ["product_update"],
     }),
     getRecommendedProducts: builder.query({

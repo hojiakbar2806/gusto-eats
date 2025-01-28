@@ -13,7 +13,7 @@ export const forAdminApi = apiService.injectEndpoints({
     }),
     createProduct: builder.mutation({
       query: (body) => ({
-        url: "/products",
+        url: "/products/",
         method: "POST",
         body,
       }),
