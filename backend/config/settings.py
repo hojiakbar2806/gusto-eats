@@ -122,10 +122,10 @@ USE_TZ = True
 TELEGRAM_BOT_TOKEN = "6633153109:AAEoT_ilVvvHdmf2PyGZkLPGcnMMygC2oEg"
 ADMINS_ID = ["5050150433"]
 
-STATIC_URL = '/static/'
+STATIC_URL = '/api/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/api/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
